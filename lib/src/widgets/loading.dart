@@ -20,6 +20,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../easy_loading.dart';
@@ -52,21 +53,19 @@ class _FlutterEasyLoadingState extends State<FlutterEasyLoading> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Overlay(
-        initialEntries: [
-          EasyLoadingOverlayEntry(
-            builder: (BuildContext context) {
-              if (widget.child != null) {
-                return widget.child!;
-              } else {
-                return Container();
-              }
-            },
-          ),
-          _overlayEntry,
-        ],
-      ),
+    return Overlay(
+      initialEntries: [
+        EasyLoadingOverlayEntry(
+          builder: (BuildContext context) {
+            if (widget.child != null) {
+              return widget.child!;
+            } else {
+              return Container();
+            }
+          },
+        ),
+        _overlayEntry,
+      ],
     );
   }
 }
